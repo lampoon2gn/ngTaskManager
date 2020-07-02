@@ -37,7 +37,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Quote } from '../Models/Quote.model';
-import { MatSort } from '@angular/material/sort';
+import { MatSort,Sort, SortDirection } from '@angular/material/sort';
 import { ApiService } from '../api.service';
 import { Observable, of} from 'rxjs';
 
@@ -79,12 +79,45 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
     //this.myService.DelByID('2');
+    
     this.myService.getAll().subscribe((things) => {
       //console.log(things);
       this.myDataSource.data = things;
       this.myDataSource.paginator = this.paginator;
       this.myDataSource.sort = this.sort;
+      this.changeSortedColumn();
   });
+  }
+
+  selectedColumn = 'TaskType';
+  dir:SortDirection='asc';
+
+  onSortChange(e){
+    //debugger;
+    if(e.checked){
+      
+      this.dir = 'desc' as SortDirection;
+    }
+    else{
+      this.dir = 'asc' as SortDirection;
+    }
+    this.changeSortedColumn();
+  }
+
+  changeSortedColumn() {
+    const sortState: Sort = {active: this.selectedColumn, direction: this.dir};
+    this.sort.active = sortState.active;
+    this.sort.direction = sortState.direction;
+    this.sort.sortChange.emit(sortState);    
+  }
+
+  onFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.myDataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  submitMyForm(form){
+    debugger;
   }
 }
 

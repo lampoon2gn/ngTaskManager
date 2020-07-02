@@ -9,6 +9,7 @@ import { TaskComponent } from './task/task.component';
 import {HttpClientModule} from '@angular/common/http'; 
 import { MaterialModule } from './material.module'
 import { ApiService } from './api.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ApiService } from './api.service';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

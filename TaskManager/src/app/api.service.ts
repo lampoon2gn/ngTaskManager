@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient }   from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Quote} from './Models/Quote.model';
+import { Quote } from './Models/Quote.model';
 //import { Quote } from '@angular/compiler';
 
 @Injectable({
@@ -31,8 +31,8 @@ export class ApiService {
   
   
 
-  UpsertByID(ID:string, newQuote:Quote){
-    return this.http.put(this.apiUrl+"api/values/"+ID,temp)
-  }
+  // UpsertByID(ID:string, newQuote:Quote){
+  //   return this.http.put(this.apiUrl+"api/values/"+ID,temp)
+  // }
 }
  
