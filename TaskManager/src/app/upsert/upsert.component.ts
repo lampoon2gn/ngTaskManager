@@ -70,6 +70,8 @@ import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Quote } from '../Models/Quote.model';
 import { ApiService } from '../api.service';
+import { FormGroup,FormControl, Validators } from '@angular/forms';
+
 
 
 export interface DialogData {
@@ -114,6 +116,7 @@ export class upsertComponent {
         TaskType: this.TaskType,
       }
     });
+    //dialogRef.
 
     dialogRef.afterClosed().subscribe(result => {
       
@@ -136,6 +139,7 @@ export class upsertComponent {
 })
 export class DialogOverviewExampleDialog {
 
+  quoteid = new FormControl('', [Validators.required]);
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
