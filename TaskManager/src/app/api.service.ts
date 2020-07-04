@@ -24,15 +24,16 @@ export class ApiService {
   }
 
   DelByID(ID:string){
-    return this.http.delete(this.apiUrl+"api/values/"+ID)
+    return this.http.delete(this.apiUrl+"api/values/"+ID);
+  }
+
+  putQuote(newQuote:Quote):Observable<any>{
+    return this.http.put(this.apiUrl+"api/values/"+ newQuote.QuoteID,newQuote);
   }
 
   temp:Quote = {QuoteType: 'abc', QuoteID: '1',Contact:'bob',Task:'do task 1',DueDate:'07/21/20',TaskType:'new'};
   
   
 
-  // UpsertByID(ID:string, newQuote:Quote){
-  //   return this.http.put(this.apiUrl+"api/values/"+ID,temp)
-  // }
 }
  

@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Quote upsert</h1>
+<div mat-dialog-content>
+  <!-- <p>What's your favorite animal?</p> -->
+  <!-- ['QuoteType', 'QuoteID','Contact','Task','DueDate', 'TaskType']; -->
+  <mat-form-field>
+    <mat-label>Quote Type</mat-label>
+    <input matInput [(ngModel)]="data.QuoteType">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quote ID</mat-label>
+    <input matInput [(ngModel)]="data.QuoteID" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Contact</mat-label>
+    <input matInput [(ngModel)]="data.Contact">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Task</mat-label>
+    <input matInput [(ngModel)]="data.Task">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Due Date</mat-label>
+    <input matInput [(ngModel)]="data.DueDate">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Task Type</mat-label>
+    <input matInput [(ngModel)]="data.TaskType">
+  </mat-form-field>
+    
+    
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+</div>

@@ -33,13 +33,14 @@
 //   }
 // }
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject,OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Quote } from '../Models/Quote.model';
 import { MatSort,Sort, SortDirection } from '@angular/material/sort';
 import { ApiService } from '../api.service';
 import { Observable, of} from 'rxjs';
+
 
 const EXAMPLE_DATA: Quote[] = [
   {QuoteType: 'abc', QuoteID: '1',Contact:'bob',Task:'do task 1',DueDate:'07/21/20',TaskType:'new'},
@@ -116,8 +117,16 @@ export class TaskComponent implements OnInit {
     this.myDataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  // addQuote(newQuote:Quote) Observable<>{
+  //   return tjis
+  // }
+
+ 
+
+
   submitMyForm(form){
     debugger;
   }
 }
+
 

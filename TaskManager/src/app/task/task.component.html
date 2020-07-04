@@ -1,24 +1,33 @@
 
 
-<div style="background-color: #c8d0cc;">
-  <h2 style="color:#3f57cc">Task Details</h2>
+<div style="background-color: #c8d0cc">
+  <h2 style="color:#3f57cc;display: inline-block;">Task Details</h2>
+  <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
+  <div class="mat-app-background basic-container" style="float:right;">
+    <dialog-overview-example>loading</dialog-overview-example>
+  </div>
 </div>
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet"> -->
+
 
 <div>
-  <mat-form-field style="margin-top:10px">
-    <mat-label>Column to sort</mat-label>
-    <mat-select  [(value)]="selectedColumn" (selectionChange)="changeSortedColumn()">
-      <mat-option *ngFor="let column of displayedColumns" [value]="column">
-        {{column}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <span >Descending: </span>
-  <mat-checkbox (change)="onSortChange($event)" class="example-margin"></mat-checkbox>
-  {{dir}}
-
-  <mat-label >Filter:</mat-label>
-  <input matInput (keyup)="onFilter($event)" placeholder="Search..." #input style="width: 50px;margin-bottom:20px;">
+  <div style="float:right;">
+    <mat-form-field style="margin-top:10px">
+      <mat-label>Column to sort</mat-label>
+      <mat-select  [(value)]="selectedColumn" (selectionChange)="changeSortedColumn()">
+        <mat-option *ngFor="let column of displayedColumns" [value]="column">
+          {{column}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <span >Descending: </span> -->
+    <mat-checkbox (change)="onSortChange($event)" class="example-margin">Descending: </mat-checkbox>
+    {{dir}}
+    <mat-form-field>
+      <mat-label >Filter:</mat-label>
+      <input matInput (keyup)="onFilter($event)" placeholder="" #input style="width: 90%;vertical-align: baseline !important; ">
+    </mat-form-field>
+  </div>
 </div>
 
 
@@ -81,7 +90,7 @@
       [pageSizeOptions]="[10, 20, 50, 100]">
   </mat-paginator>
 </div>
-
+<!-- 
 <br>
 <br>
 <div>
@@ -96,5 +105,5 @@
     <button [disabled]="!sampleform.valid" type="submit" (click)="submitMyForm(sampleform)"> Submit</button>
   </form>
 </div>
-{{sampleform.status|json}}
+{{sampleform.status|json}} -->
 
