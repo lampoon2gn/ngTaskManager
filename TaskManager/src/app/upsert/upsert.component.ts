@@ -66,11 +66,12 @@
 
 // }
 
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, Output, EventEmitter} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Quote } from '../Models/Quote.model';
 import { ApiService } from '../api.service';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { TaskComponent} from '../task/task.component'
 
 
 
@@ -129,6 +130,8 @@ export class upsertComponent {
         
       })
     });
+
+    //this.table.ngOnInit();
   }
 
 }
@@ -140,6 +143,8 @@ export class upsertComponent {
 export class DialogOverviewExampleDialog {
 
   quoteid = new FormControl('', [Validators.required]);
+  @Output() eventClicked = new EventEmitter<Event>();
+
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -147,6 +152,7 @@ export class DialogOverviewExampleDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
 
 }
 

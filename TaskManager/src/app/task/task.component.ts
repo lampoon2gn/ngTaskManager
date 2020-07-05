@@ -33,7 +33,7 @@
 //   }
 // }
 
-import { Component, Inject,OnInit, ViewChild } from '@angular/core';
+import { Component, Inject,OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Quote } from '../Models/Quote.model';
@@ -121,7 +121,6 @@ export class TaskComponent implements OnInit {
   //   return tjis
   // }
 
- 
 
 
   submitMyForm(form){

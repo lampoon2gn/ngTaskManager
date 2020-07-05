@@ -3,6 +3,7 @@ import { HttpClient }   from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Quote } from './Models/Quote.model';
+import { reg } from './Models/reg.model';
 //import { Quote } from '@angular/compiler';
 
 @Injectable({
@@ -33,7 +34,9 @@ export class ApiService {
 
   temp:Quote = {QuoteType: 'abc', QuoteID: '1',Contact:'bob',Task:'do task 1',DueDate:'07/21/20',TaskType:'new'};
   
-  
+  postRegister(r:reg):Observable<any>{
+    return this.http.post(this.apiUrl+"api/Account/Register",r);
+  }
 
 }
  
