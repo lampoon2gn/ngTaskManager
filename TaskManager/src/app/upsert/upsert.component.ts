@@ -102,7 +102,7 @@ export class upsertComponent {
   DueDate: string;
   TaskType: string;
 
-  constructor(public dialog: MatDialog,private myService: ApiService) {}
+  constructor(public dialog: MatDialog,private myService: ApiService,private task:TaskComponent) {}
 
   //['QuoteType', 'QuoteID','Contact','Task','DueDate', 'TaskType'];
   openDialog(): void {
@@ -117,17 +117,18 @@ export class upsertComponent {
         TaskType: this.TaskType,
       }
     });
-    //dialogRef.
 
     dialogRef.afterClosed().subscribe(result => {
       
-      debugger;
+      
       console.log('The dialog was closed');
       this.quote = result as Quote;
-
+      this.quote.DueDate = this.quote.DueDate.toString().substring(4,15);
+      //debugger;
+ 
       this.myService.putQuote(this.quote).subscribe(data=>{
+        this.task.ngOnInit();
         console.log(data);
-        
       })
     });
 

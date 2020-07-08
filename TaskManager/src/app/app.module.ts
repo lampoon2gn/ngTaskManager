@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login/login.component';
 import { TaskComponent,} from './task/task.component';
-import {HttpClientModule} from '@angular/common/http'; 
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'; 
 import { MaterialModule } from './material.module'
 import { ApiService } from './api.service';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { upsertComponent,DialogOverviewExampleDialog} from './upsert/upsert.component';
 import { RegisterComponent } from './register/register.component'
-
+import { HeaderInterceptor } from './http-error.interceptor'
+import { DialogBoxComponent } from './dialog-box/dialog-box.component'
 
 
 
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component'
     TaskComponent,
     upsertComponent,
     DialogOverviewExampleDialog,
-    RegisterComponent
+    RegisterComponent,
+    DialogBoxComponent
 
   ],
   imports: [
@@ -35,7 +37,10 @@ import { RegisterComponent } from './register/register.component'
     ReactiveFormsModule
   
   ],
-  providers: [ApiService],
+  entryComponents: [
+    DialogBoxComponent
+  ],
+  providers: [ApiService,{provide: HTTP_INTERCEPTORS,useClass: HeaderInterceptor,multi:true}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

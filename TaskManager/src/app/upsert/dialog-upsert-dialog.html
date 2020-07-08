@@ -3,27 +3,35 @@
   <div mat-dialog-content>
     <!-- <p>What's your favorite animal?</p> -->
     <!-- ['QuoteType', 'QuoteID','Contact','Task','DueDate', 'TaskType']; -->
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Quote Type</mat-label>
       <input matInput [(ngModel)]="data.QuoteType">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Quote ID</mat-label>
       <input matInput [(ngModel)]="data.QuoteID" [formControl]="quoteid" required>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Contact</mat-label>
       <input matInput [(ngModel)]="data.Contact">
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Task</mat-label>
+    <mat-form-field appearance="fill">
+      <mat-label>Task</mat-label >
       <input matInput [(ngModel)]="data.Task">
     </mat-form-field>
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>Due Date</mat-label>
       <input matInput [(ngModel)]="data.DueDate">
+    </mat-form-field> -->
+
+    <mat-form-field style="width: 200px;" appearance="fill">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.DueDate" disabled>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
     </mat-form-field>
-    <mat-form-field>
+
+    <mat-form-field appearance="fill">
       <mat-label>Task Type</mat-label>
       <input matInput [(ngModel)]="data.TaskType">
     </mat-form-field>

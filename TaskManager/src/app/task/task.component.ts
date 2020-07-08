@@ -35,11 +35,14 @@
 
 import { Component, Inject,OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource,MatTable } from '@angular/material/table';
 import { Quote } from '../Models/Quote.model';
 import { MatSort,Sort, SortDirection } from '@angular/material/sort';
 import { ApiService } from '../api.service';
 import { Observable, of} from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import {DialogBoxComponent} from '../dialog-box/dialog-box.component';
+import { Router } from '@angular/router';
 
 
 const EXAMPLE_DATA: Quote[] = [
@@ -66,17 +69,18 @@ const EXAMPLE_DATA: Quote[] = [
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  displayedColumns = ['QuoteType', 'QuoteID','Contact','Task','DueDate', 'TaskType'];
+  displayedColumns = ['QuoteType', 'QuoteID','Contact','Task','DueDate', 'TaskType', 'Actions'];
   myDataSource = new MatTableDataSource<Quote>();//(EXAMPLE_DATA);
   //service:ApiService;
 
-  constructor(private myService: ApiService){
+  constructor(private myService: ApiService,public dialog:MatDialog,private router:Router){
     //this.service = _service;
   }
   //myDataSource = new MatTableDataSource(this.myService.getAll());
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
 
   ngOnInit() {
     //this.myService.DelByID('2');
@@ -123,9 +127,57 @@ export class TaskComponent implements OnInit {
 
 
 
-  submitMyForm(form){
-    debugger;
+  openDialog(action,obj){
+    obj.action = action;
+    //debugger;
+    const dialogRef = this.dialog.open(DialogBoxComponent,{
+      width: '250px',
+      data:obj
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      //debugger;
+      if(result.event == 'Details'){
+        this.detailRowData(result.data);
+      }else if(result.event =='Delete'){
+        //debugger;
+        this.deleteRowData(result.data);
+      }else if(result.event =='Update'){
+        //debugger;
+        this.updateRowData(result.data);
+      }
+
+    })
+
   }
+
+  deleteRowData(row_obj){
+    //debugger;
+    this.myService.DelByID(row_obj.QuoteID).subscribe(
+      () => {
+        this.ngOnInit();
+        console.log("Quote deleted");
+        }
+      );
+    
+  }
+
+  doLogout(){
+    sessionStorage.removeItem('userToken');
+    this.router.navigate(['/login'])
+  }
+
+  detailRowData(row_obj){
+    
+  }
+
+  updateRowData(row_obj){
+    
+  }
+
+
+
+
 }
 
 

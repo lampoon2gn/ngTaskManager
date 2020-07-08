@@ -7,21 +7,26 @@
     <form class="example-form">
 
       <mat-card-content>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" style="margin-bottom: 2%;">
           <input [(ngModel)]="regEmail"  matInput placeholder="Email" [formControl]="email" required>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input [(ngModel)]="regPass"  matInput placeholder="Password" [attr.] [formControl]="pass" required>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input [(ngModel)]="regRePass"  matInput  placeholder="Confirm Password" [formControl]="repass" required>
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
         </mat-form-field>
         
-        {{regEmail}}
+
+        <mat-form-field class="example-full-width" style="margin-bottom: 2%;">
+          <input [(ngModel)]="regPass"  matInput placeholder="Password"  [formControl]="pass" required>
+          <mat-error *ngIf="pass.invalid">{{getPassErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" style="margin-bottom: 2%;">
+          <input [(ngModel)]="regRePass"  matInput  placeholder="Confirm Password" [formControl]="repass" required>
+          <mat-error *ngIf="repass.invalid">{{getRepassErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        
+        <!-- {{regEmail}}
         {{regPass}}
-        {{regRePass}}
+        {{regRePass}} -->
 
       </mat-card-content>
 

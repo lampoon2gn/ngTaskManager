@@ -1,4 +1,4 @@
-export class Quote {
+export interface Quote {
   QuoteType: string;
   QuoteID: string;
   Contact: string;

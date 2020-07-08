@@ -1,0 +1,23 @@
+<!-- <p>dialog-box works!</p> -->
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+  <mat-form-field *ngIf="action == 'Details';">
+    <!-- <input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name"> -->
+    <b>Quote Type: </b> {{local_data.QuoteType}} <br>
+    <b>Quote ID: </b> {{local_data.QuoteID}}<br>
+    <b>Contact: </b> {{local_data.Contact}}<br>
+    <b>Task: </b> {{local_data.Task}}<br>
+    <b>Due Date: </b> {{local_data.DueDate}}<br>
+    <b>Task Type: </b> {{local_data.TaskType}}<br>
+  </mat-form-field>
+  <mat-form-field #elseTemplate *ngIf="action == 'Delete';">
+    Sure to delete Quote <b>{{local_data.QuoteID}}</b>?
+  </mat-form-field>
+  <mat-form-field *ngIf="action == 'update';">
+    Sure to delete Quote <b>{{local_data.QuoteID}}</b>?
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button *ngIf="action != 'Details'" (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
