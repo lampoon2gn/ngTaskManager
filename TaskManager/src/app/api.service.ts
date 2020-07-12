@@ -21,8 +21,8 @@ const httpOptions = {
 })
 export class ApiService {
 
-  private apiUrl = 'https://localhost:44357/';
-  //private apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
+  //private apiUrl = 'https://localhost:44357/';
+  private apiUrl = 'https://webapipractice20200710123335.azurewebsites.net/';
   constructor(private http:HttpClient) { }
   res:any;
 
