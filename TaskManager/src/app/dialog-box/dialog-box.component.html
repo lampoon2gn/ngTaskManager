@@ -2,7 +2,6 @@
 <h1 mat-dialog-title><strong>{{action}}</strong></h1>
 <div mat-dialog-content>
   <mat-form-field *ngIf="action == 'Details';">
-    <!-- <input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name"> -->
     <b>Quote Type: </b> {{local_data.QuoteType}} <br>
     <b>Quote ID: </b> {{local_data.QuoteID}}<br>
     <b>Contact: </b> {{local_data.Contact}}<br>
@@ -11,9 +10,6 @@
     <b>Task Type: </b> {{local_data.TaskType}}<br>
   </mat-form-field>
   <mat-form-field  *ngIf="action == 'Delete';">
-    Sure to delete Quote <b>{{local_data.QuoteID}}</b>?
-  </mat-form-field>
-  <mat-form-field *ngIf="action == 'update';">
     Sure to delete Quote <b>{{local_data.QuoteID}}</b>?
   </mat-form-field>
 </div>

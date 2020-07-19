@@ -13,7 +13,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="margin-bottom: 2%;">
-          <input matInput [(ngModel)]="logPass" placeholder="Password" [formControl]="pass"required>
+          <input type="password" matInput [(ngModel)]="logPass" placeholder="Password" [formControl]="pass"required>
           <mat-error *ngIf="pass.invalid">{{getPassErrorMessage()}}</mat-error>
         </mat-form-field>
 

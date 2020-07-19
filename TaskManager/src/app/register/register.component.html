@@ -14,19 +14,14 @@
         
 
         <mat-form-field class="example-full-width" style="margin-bottom: 2%;">
-          <input [(ngModel)]="regPass"  matInput placeholder="Password"  [formControl]="pass" required>
+          <input type="password" matInput [(ngModel)]="regPass"  matInput placeholder="Password"  [formControl]="pass" required>
           <mat-error *ngIf="pass.invalid">{{getPassErrorMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="margin-bottom: 2%;">
-          <input [(ngModel)]="regRePass"  matInput  placeholder="Confirm Password" [formControl]="repass" required>
+          <input type="password" matInput [(ngModel)]="regRePass"  matInput  placeholder="Confirm Password" [formControl]="repass" required>
           <mat-error *ngIf="repass.invalid">{{getRepassErrorMessage()}}</mat-error>
         </mat-form-field>
-
-        
-        <!-- {{regEmail}}
-        {{regPass}}
-        {{regRePass}} -->
 
       </mat-card-content>
 
