@@ -82,8 +82,8 @@
     <ng-container matColumnDef="Actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let row" class="action-link"> 
-        <a (click)="openDialog('Details',row)"> <mat-icon style="color:rgba(0,0,0,.26)">remove_red_eye </mat-icon></a> 
-        <a (click)="openDialog('Delete',row)"><mat-icon style="color:rgba(0,0,0,.26)">delete</mat-icon></a>  
+        <a mat-button (click)="openDialog('Details',row)"> <mat-icon style="color:rgba(0,0,0,.26)">remove_red_eye </mat-icon></a> 
+        <a mat-button (click)="openDialog('Delete',row)"><mat-icon style="color:rgba(0,0,0,.26)">delete</mat-icon></a>  
         
       </td>
     </ng-container>
